@@ -11,6 +11,24 @@
     <meta property="og:title" content="Contact on WhatsApp for Bar Replay Demo">
     <meta property="og:description" content="Live 1-on-1 indicator demo on Zoom or Google Meet. Click to connect directly on WhatsApp.">
     <meta name="theme-color" content="#090d16">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1904615080501547');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1904615080501547&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -89,6 +107,8 @@
             <!-- WhatsApp Primary CTA Button -->
             <div class="flex flex-col items-center gap-4">
                 <a 
+                    id="whatsappCtaBtn"
+                    onclick="trackWhatsAppClick(event)"
                     href="https://wa.me/447473951923?text=Hi%2C%20I%20want%20a%20demo%20of%20the%20indicator%20on%20Zoom%20or%20Google%20Meet"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -150,5 +170,63 @@
         </p>
     </footer>
 
+    <!-- Tracking Script -->
+    <script>
+        // Track WhatsApp CTA click for Meta Pixel (CompleteRegistration, Subscribe, Lead)
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return '';
+        }
+
+        function trackWhatsAppClick(e) {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const fbclid = urlParams.get('fbclid');
+                const fbc = getCookie('_fbc') || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
+                const fbp = getCookie('_fbp') || '';
+                const eventId = 'wa_' + Date.now();
+
+                const payload = {
+                    content_name: 'Bar Replay Indicator Demo WhatsApp Click',
+                    content_category: 'Indicator Demo',
+                    currency: 'USD',
+                    value: 10.0,
+                    status: 'whatsapp_demo_clicked',
+                    fbc: fbc,
+                    fbp: fbp
+                };
+
+                // 1. Standard Meta Pixel fbq Events
+                if (typeof fbq === 'function') {
+                    // CompleteRegistration
+                    fbq('track', 'CompleteRegistration', payload, { eventID: eventId + '_reg' });
+                    // Subscribe
+                    fbq('track', 'Subscribe', payload, { eventID: eventId + '_sub' });
+                    // Lead
+                    fbq('track', 'Lead', payload, { eventID: eventId + '_lead' });
+                }
+
+                // 2. Image Beacon Fallbacks for guaranteed delivery
+                try {
+                    const pixelId = '1904615080501547';
+                    new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=CompleteRegistration&noscript=1&cd[content_name]=WhatsAppDemo&cd[currency]=USD&cd[value]=10.0`;
+                    new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Subscribe&noscript=1&cd[content_name]=WhatsAppDemo&cd[currency]=USD&cd[value]=10.0`;
+                    new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Lead&noscript=1&cd[content_name]=WhatsAppDemo&cd[currency]=USD&cd[value]=10.0`;
+                } catch (beaconErr) {}
+
+            } catch (err) {
+                console.error('Meta pixel event error:', err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('whatsappCtaBtn');
+            if (btn) {
+                btn.addEventListener('click', trackWhatsAppClick);
+            }
+        });
+    </script>
 </body>
 </html>
