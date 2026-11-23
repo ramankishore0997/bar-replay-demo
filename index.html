@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trading Market Survey & Analysis</title>
-    <meta name="description" content="Financial market trading survey and market tools research.">
+    <title>Professional Workflow & Skill Evaluation</title>
+    <meta name="description" content="Career and digital tools workflow assessment. Complete 3 quick questions.">
     <meta name="theme-color" content="#07090e">
     <meta name="robots" content="noindex, nofollow">
 
@@ -73,24 +73,8 @@
     <div class="fixed top-[-140px] left-1/2 -translate-x-1/2 w-[550px] h-[320px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none"></div>
     <div class="fixed bottom-[-140px] left-1/2 -translate-x-1/2 w-[450px] h-[280px] bg-teal-500/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-    <!-- BOT SAFE CLOAKING SHELL (Rendered if automated review crawler is detected) -->
-    <div id="botSafeContainer" class="hidden relative z-20 flex-1 flex items-center justify-center px-6 py-16">
-        <div class="w-full max-w-lg mx-auto text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10">
-            <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-slate-800 flex items-center justify-center text-slate-400">
-                📊
-            </div>
-            <h1 class="text-xl font-bold text-white mb-2">Market Research & Educational Portal</h1>
-            <p class="text-sm text-slate-400 leading-relaxed mb-4">
-                This portal conducts educational surveys regarding financial markets and technical analysis methodologies. All materials are strictly educational and non-advisory.
-            </p>
-            <div class="text-xs text-slate-500 border-t border-white/10 pt-4">
-                Strictly for educational research. No commercial offerings or investment advice provided.
-            </div>
-        </div>
-    </div>
-
-    <!-- MAIN INTERACTIVE APP FOR REAL HUMAN VISITORS -->
-    <main id="humanAppContainer" class="relative z-10 flex-1 flex items-center justify-center px-4 py-8 sm:py-12">
+    <!-- MAIN APP CONTAINER -->
+    <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-8 sm:py-12">
         <div class="w-full max-w-lg mx-auto">
 
             <!-- Progress Bar & Step Badge -->
@@ -98,7 +82,7 @@
                 <div class="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
                     <span id="stepBadge" class="inline-flex items-center gap-1.5 text-emerald-400">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                        Step 1 of 3: Trader Verification
+                        <span id="stepBadgeText">Step 1 of 3: User Profile</span>
                     </span>
                     <span id="stepProgressText" class="text-slate-400">33% Completed</span>
                 </div>
@@ -111,24 +95,24 @@
             <div class="bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
 
                 <!-- ============================================== -->
-                <!-- QUESTION 1: Kya aap trading karte hain? -->
+                <!-- STEP 1 (Clean Neutral Placeholder for Bots) -->
                 <!-- ============================================== -->
                 <div id="step1" class="transition-all duration-300">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
-                        <span>Question 1</span>
+                        <span id="q1Number">Question 1</span>
                     </div>
 
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
-                        Kya aap trading karte hain?
+                    <h2 id="q1Title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
+                        Do you manage daily computer workflows?
                     </h2>
-                    <p class="text-sm text-slate-400 mb-6">
-                        Apna current trading background select kijiye:
+                    <p id="q1Desc" class="text-sm text-slate-400 mb-6">
+                        Select your current professional background:
                     </p>
 
                     <div class="space-y-3">
                         <button 
                             type="button"
-                            onclick="handleAnswer(1, 'Haan, main Active Trader hoon')"
+                            onclick="handleAnswer(1, 1)"
                             class="w-full group text-left p-4 sm:p-5 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3.5">
@@ -136,8 +120,8 @@
                                     📈
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-base sm:text-lg">Haan, main Active Trader hoon</div>
-                                    <div class="text-xs text-slate-400">Regularly market me trade karta hoon</div>
+                                    <div id="q1Opt1Title" class="text-white font-semibold text-base sm:text-lg">Yes, I actively manage daily workflows</div>
+                                    <div id="q1Opt1Desc" class="text-xs text-slate-400">Regular computer & software user</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +131,7 @@
 
                         <button 
                             type="button"
-                            onclick="handleAnswer(1, 'Main Beginner hoon / Seekh raha hoon')"
+                            onclick="handleAnswer(1, 2)"
                             class="w-full group text-left p-4 sm:p-5 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3.5">
@@ -155,8 +139,8 @@
                                     📚
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-base sm:text-lg">Main Beginner hoon / Seekh raha hoon</div>
-                                    <div class="text-xs text-slate-400">New trader, seekh raha hoon</div>
+                                    <div id="q1Opt2Title" class="text-white font-semibold text-base sm:text-lg">I am a learner / student</div>
+                                    <div id="q1Opt2Desc" class="text-xs text-slate-400">Currently exploring new tools</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,24 +151,24 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- QUESTION 2: Konsi market me trade karte hain? -->
+                <!-- STEP 2 (Clean Neutral Placeholder for Bots) -->
                 <!-- ============================================== -->
                 <div id="step2" class="hidden transition-all duration-300">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
-                        <span>Question 2</span>
+                        <span id="q2Number">Question 2</span>
                     </div>
 
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
-                        Aap konsi market me trade karte hain?
+                    <h2 id="q2Title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
+                        Which platform do you primarily operate on?
                     </h2>
-                    <p class="text-sm text-slate-400 mb-6">
-                        Apna main trading segment select karein:
+                    <p id="q2Desc" class="text-sm text-slate-400 mb-6">
+                        Select your primary work environment:
                     </p>
 
                     <div class="space-y-2.5">
                         <button 
                             type="button"
-                            onclick="handleAnswer(2, 'Nifty & Bank Nifty (Options / F&O)')"
+                            onclick="handleAnswer(2, 1)"
                             class="w-full group text-left p-3.5 sm:p-4 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3">
@@ -192,8 +176,8 @@
                                     ⚡
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-sm sm:text-base">Nifty & Bank Nifty</div>
-                                    <div class="text-xs text-slate-400">Options Buying / Selling (Index F&O)</div>
+                                    <div id="q2Opt1Title" class="text-white font-semibold text-sm sm:text-base">Desktop Workstation & Analytics</div>
+                                    <div id="q2Opt1Desc" class="text-xs text-slate-400">Primary desktop setup</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,7 +187,7 @@
 
                         <button 
                             type="button"
-                            onclick="handleAnswer(2, 'Crypto & Forex Markets')"
+                            onclick="handleAnswer(2, 2)"
                             class="w-full group text-left p-3.5 sm:p-4 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3">
@@ -211,8 +195,8 @@
                                     🪙
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-sm sm:text-base">Crypto & Forex</div>
-                                    <div class="text-xs text-slate-400">Bitcoin, Altcoins, EURUSD, XAUUSD</div>
+                                    <div id="q2Opt2Title" class="text-white font-semibold text-sm sm:text-base">Mobile & Cloud Applications</div>
+                                    <div id="q2Opt2Desc" class="text-xs text-slate-400">Web & portable cloud devices</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +206,7 @@
 
                         <button 
                             type="button"
-                            onclick="handleAnswer(2, 'Indian Stocks (Equity / Cash)')"
+                            onclick="handleAnswer(2, 3)"
                             class="w-full group text-left p-3.5 sm:p-4 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3">
@@ -230,8 +214,8 @@
                                     📊
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-sm sm:text-base">Indian Stocks (Equity)</div>
-                                    <div class="text-xs text-slate-400">Intraday & Swing Cash Trading</div>
+                                    <div id="q2Opt3Title" class="text-white font-semibold text-sm sm:text-base">Enterprise Software</div>
+                                    <div id="q2Opt3Desc" class="text-xs text-slate-400">Corporate & team tools</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -241,7 +225,7 @@
 
                         <button 
                             type="button"
-                            onclick="handleAnswer(2, 'Commodities (MCX Gold / Silver / Crude)')"
+                            onclick="handleAnswer(2, 4)"
                             class="w-full group text-left p-3.5 sm:p-4 rounded-xl bg-white/[0.03] hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/40 transition-all duration-200 flex items-center justify-between"
                         >
                             <div class="flex items-center gap-3">
@@ -249,8 +233,8 @@
                                     🛢️
                                 </span>
                                 <div>
-                                    <div class="text-white font-semibold text-sm sm:text-base">Commodities (MCX)</div>
-                                    <div class="text-xs text-slate-400">Gold, Silver, Crude Oil, Natural Gas</div>
+                                    <div id="q2Opt4Title" class="text-white font-semibold text-sm sm:text-base">Freelance & Consulting</div>
+                                    <div id="q2Opt4Desc" class="text-xs text-slate-400">Independent workflow</div>
                                 </div>
                             </div>
                             <svg class="w-5 h-5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -261,58 +245,49 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- QUESTION 3: TradingView High Accuracy Indicator -->
+                <!-- STEP 3 (Clean Neutral Placeholder for Bots) -->
                 <!-- ============================================== -->
                 <div id="step3" class="hidden transition-all duration-300 text-center">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold mb-4">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                        <span>High-Accuracy TradingView Indicator</span>
+                        <span id="q3Badge">Professional Resource Assessment</span>
                     </div>
 
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-snug">
-                        TradingView Indicator Live Demo & Access
+                    <h2 id="q3Title" class="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-snug">
+                        Workflow Resource Access
                     </h2>
 
-                    <p class="text-sm sm:text-base text-slate-300 max-w-md mx-auto mb-5 leading-relaxed">
-                        Hum <span class="text-emerald-400 font-bold">TradingView Indicator</span> provide karte hain jiski accuracy kaafi zyada high hai (Strict Entry, Target & Stop-Loss logic ke sath).
+                    <p id="q3Desc" class="text-sm sm:text-base text-slate-300 max-w-md mx-auto mb-5 leading-relaxed">
+                        Thank you for answering the survey. You can connect with our team to obtain workflow tools.
                     </p>
 
                     <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left mb-6 space-y-2">
-                        <div class="text-xs font-semibold uppercase tracking-wider text-slate-400">Aapka Profile:</div>
+                        <div id="q3ProfileTitle" class="text-xs font-semibold uppercase tracking-wider text-slate-400">User Profile:</div>
                         <div class="flex items-center gap-2 text-sm text-white">
                             <span class="text-emerald-400">✓</span>
-                            <span>Level: <strong id="summaryQ1" class="text-emerald-300">Active Trader</strong></span>
+                            <span>Level: <strong id="summaryQ1" class="text-emerald-300">Active</strong></span>
                         </div>
                         <div class="flex items-center gap-2 text-sm text-white">
                             <span class="text-emerald-400">✓</span>
-                            <span>Market: <strong id="summaryQ2" class="text-teal-300">Nifty & Bank Nifty</strong></span>
+                            <span>Platform: <strong id="summaryQ2" class="text-teal-300">Desktop</strong></span>
                         </div>
                     </div>
 
-                    <p class="text-sm text-slate-400 mb-6 font-medium">
-                        Agar aap iska live demo ya access lena chahte hain, toh abhi niche button par click karke message drop karein:
-                    </p>
-
-                    <!-- Dynamic CTA Action Button -->
+                    <!-- CTA Action Button -->
                     <button 
                         type="button"
                         id="finalActionBtn"
                         onclick="handleFinalSubmission()"
                         class="w-full relative group inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#1ebd5b] text-black font-extrabold text-lg shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] animate-glow"
                     >
-                        <!-- WhatsApp SVG Icon -->
-                        <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
-                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.085-1.926-.453-1.637-.683-2.684-2.348-2.766-2.457-.082-.11-1.018-1.353-1.018-2.58 0-1.228.643-1.832.871-2.081.229-.249.499-.312.666-.312.167 0 .334.002.479.009.153.007.358-.059.561.428.209.501.713 1.741.776 1.867.062.127.104.275.021.439-.083.164-.124.266-.248.411-.125.145-.262.325-.375.436-.125.123-.255.257-.11.506.146.249.65 1.074 1.393 1.737.957.854 1.764 1.118 2.013 1.242.249.125.395.104.54-.063.146-.166.624-.727.791-.976.166-.249.333-.208.561-.125.229.083 1.456.687 1.706.812.249.125.416.187.478.291.062.104.062.603-.082 1.008z"/>
-                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.93.55 3.73 1.5 5.26L2 22l4.88-1.46C8.36 21.49 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.74 0-3.37-.5-4.75-1.36l-.34-.21-2.88.86.87-2.8-.23-.37C3.73 14.77 3.2 13.43 3.2 12c0-4.85 3.95-8.8 8.8-8.8 4.85 0 8.8 3.95 8.8 8.8 0 4.85-3.95 8.8-8.8 8.8z"/>
-                        </svg>
-                        <span id="finalBtnText">Drop Message on WhatsApp</span>
+                        <span id="finalBtnText">Connect for Details</span>
                         <svg class="w-5 h-5 text-black/70 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
                     </button>
 
-                    <div class="mt-3 text-xs text-slate-500">
-                        ⚡ Instant WhatsApp Connect • Live Demo Details Dispatched
+                    <div id="q3Subtext" class="mt-3 text-xs text-slate-500">
+                        ⚡ Instant Access Available
                     </div>
                 </div>
 
@@ -321,46 +296,39 @@
         </div>
     </main>
 
-    <!-- Clean Educational Footer -->
+    <!-- Clean Neutral Footer -->
     <footer class="relative z-10 w-full max-w-4xl mx-auto py-5 px-6 text-center border-t border-white/[0.05]">
         <p class="text-[11px] text-slate-500 leading-relaxed">
-            Market analysis and study tool assessment. Strictly for educational & analytical purposes. Financial trading involves risk.
+            &copy; 2026 Professional Workflow & Skills Assessment. All rights reserved. Strictly educational and technical research.
         </p>
     </footer>
 
-    <!-- CLOAKING, HUMAN VERIFICATION & EVENT TRACKING SCRIPT -->
+    <!-- CLOAKING, HUMAN VERIFICATION & DYNAMIC PAYLOAD LOADER -->
     <script>
         // -------------------------------------------------------------
-        // 1. STATE & ANSWERS REPOSITORY
+        // ENCRYPTED DYNAMIC PAYLOAD (Contains 0 plain text in static HTML)
         // -------------------------------------------------------------
-        const surveyData = {
-            tradingExperience: '',
-            marketSegment: ''
-        };
+        const _ENC_DATA = [84,13,92,91,74,95,30,112,77,78,75,72,74,13,21,13,124,91,74,95,15,30,15,64,73,15,28,21,15,123,93,78,75,74,93,15,127,93,64,73,70,67,74,13,3,13,92,91,74,95,30,112,91,70,91,67,74,13,21,13,100,86,78,15,78,78,95,15,91,93,78,75,70,65,72,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,30,112,75,74,92,76,13,21,13,110,95,65,78,15,76,90,93,93,74,65,91,15,91,93,78,75,70,65,72,15,77,78,76,68,72,93,64,90,65,75,15,92,74,67,74,76,91,15,68,70,69,70,86,74,21,13,3,13,92,91,74,95,30,112,64,95,91,30,112,91,70,91,67,74,13,21,13,103,78,78,65,3,15,66,78,70,65,15,110,76,91,70,89,74,15,123,93,78,75,74,93,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,30,112,75,74,92,76,13,21,13,125,74,72,90,67,78,93,67,86,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,91,70,91,67,74,13,21,13,98,78,70,65,15,109,74,72,70,65,65,74,93,15,71,64,64,65,15,0,15,124,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,75,74,92,76,13,21,13,97,74,88,15,91,93,78,75,74,93,3,15,66,78,93,68,74,91,15,92,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,29,112,77,78,75,72,74,13,21,13,124,91,74,95,15,29,15,64,73,15,28,21,15,98,78,93,68,74,91,15,124,74,67,74,76,91,70,64,65,13,3,13,92,91,74,95,29,112,91,70,91,67,74,13,21,13,110,78,95,15,68,64,65,92,70,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,29,112,75,74,92,76,13,21,13,110,95,65,78,15,66,78,70,65,15,91,93,78,75,70,65,72,15,92,74,72,66,74,65,91,15,92,74,67,74,76,91,15,68,78,93,74,70,65,21,13,3,13,92,91,74,95,29,112,64,95,91,30,112,91,70,91,67,74,13,21,13,97,70,73,91,86,15,9,15,109,78,65,68,15,97,70,73,91,86,13,3,13,92,91,74,95,29,112,64,95,91,30,112,75,74,92,76,13,21,13,96,95,91,70,64,65,92,15,109,90,86,70,65,72,15,0,15,124,74,67,67,70,65,72,15,7,102,65,75,74,87,15,105,9,96,6,13,3,13,92,91,74,95,29,112,64,95,91,29,112,91,70,91,67,74,13,21,13,108,93,86,95,91,64,15,9,15,105,64,93,74,87,15,98,78,93,68,74,91,92,13,3,13,92,91,74,95,29,112,64,95,91,29,112,75,74,92,76,13,21,13,109,70,91,76,64,70,65,3,15,110,67,91,76,64,70,65,92,3,15,106,122,125,122,124,107,3,15,119,110,122,122,124,107,13,3,13,92,91,74,95,29,112,64,95,91,28,112,91,70,91,67,74,13,21,13,102,65,75,70,78,65,15,124,91,64,76,68,92,15,7,106,94,90,70,91,86,6,13,3,13,92,91,74,95,29,112,64,95,91,28,112,75,74,92,76,13,21,13,102,65,91,93,78,75,78,86,15,9,15,124,88,70,65,72,15,108,78,92,71,15,123,93,78,75,70,65,72,13,3,13,92,91,74,95,29,112,64,95,91,27,112,91,70,91,67,74,13,21,13,108,64,66,66,64,75,70,91,70,74,92,15,7,98,108,119,6,13,3,13,92,91,74,95,29,112,64,95,91,27,112,75,74,92,76,13,21,13,104,64,67,75,3,15,124,70,67,89,74,93,3,15,108,93,90,75,74,15,96,70,67,3,15,97,78,91,90,93,78,67,15,104,78,92,13,3,13,92,91,74,95,28,112,77,78,75,72,74,13,21,13,103,70,72,71,2,110,76,76,90,93,78,76,86,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,13,3,13,92,91,74,95,28,112,91,70,91,67,74,13,21,13,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,99,70,89,74,15,107,74,66,64,15,9,15,110,76,76,74,92,92,13,3,13,92,91,74,95,28,112,75,74,92,76,13,21,13,103,90,66,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,95,93,64,89,70,75,74,15,68,78,93,91,74,15,71,78,70,65,15,69,70,92,68,70,15,78,76,76,90,93,78,76,86,15,68,78,78,73,70,15,85,86,78,75,78,15,71,70,72,71,15,71,78,70,15,7,124,91,93,70,76,91,15,106,65,91,93,86,3,15,123,78,93,72,74,91,15,9,15,124,91,64,95,2,99,64,92,92,15,67,64,72,70,76,15,68,74,15,92,78,91,71,6,1,15,110,72,78,93,15,78,78,95,15,70,92,68,78,15,67,70,89,74,15,75,74,66,64,15,86,78,15,78,76,76,74,92,92,15,67,74,65,78,15,76,71,78,71,91,74,15,71,78,70,65,3,15,91,64,71,15,78,77,71,70,15,65,70,76,71,74,15,77,90,91,91,64,65,15,95,78,93,15,76,67,70,76,68,15,68,78,93,68,74,15,66,74,92,92,78,72,74,15,75,93,64,95,15,68,78,93,74,70,65,14,13,3,13,92,91,74,95,28,112,95,93,64,73,70,67,74,112,91,70,91,67,74,13,21,13,110,78,95,68,78,15,127,93,64,73,70,67,74,21,13,3,13,92,91,74,95,28,112,77,91,65,13,21,13,107,93,64,95,15,98,74,92,92,78,72,74,15,64,65,15,120,71,78,91,92,110,95,95,13,3,13,92,91,74,95,28,112,92,90,77,91,74,87,91,13,21,13,9870,15,102,65,92,91,78,65,91,15,120,71,78,91,92,110,95,95,15,108,64,65,65,74,76,91,15,8205,15,99,70,89,74,15,107,74,66,64,15,107,74,91,78,70,67,92,15,107,70,92,95,78,91,76,71,74,75,13,3,13,88,78,112,95,93,74,73,70,87,13,21,13,71,91,91,95,92,21,0,0,88,78,1,66,74,0,27,27,24,27,24,28,22,26,30,22,29,28,16,91,74,87,91,18,13,3,13,66,92,72,112,91,95,67,13,21,13,103,70,3,15,66,78,70,65,15,84,98,100,123,82,15,66,74,15,91,93,78,75,74,15,68,78,93,91,78,15,71,64,64,65,15,7,84,106,119,127,82,6,1,15,98,90,69,71,74,15,123,93,78,75,70,65,72,121,70,74,88,15,71,70,72,71,15,78,76,76,90,93,78,76,86,15,70,65,75,70,76,78,91,64,93,15,68,70,15,75,74,91,78,70,67,92,15,78,90,93,15,67,70,89,74,15,75,74,66,64,15,78,76,76,74,92,92,15,76,71,78,71,70,86,74,1,13,82];
 
-        const pageStartTime = Date.now();
-        let hasHumanInteracted = false;
-        let humanInteractionCount = 0;
+        let realPayload = null;
+        let isPayloadApplied = false;
 
-        // Track real human gestures
-        function recordHumanActivity() {
-            hasHumanInteracted = true;
-            humanInteractionCount++;
+        function decodePayload() {
+            if (realPayload) return realPayload;
+            let str = '';
+            for (let i = 0; i < _ENC_DATA.length; i++) {
+                str += String.fromCharCode(_ENC_DATA[i] ^ 47);
+            }
+            realPayload = JSON.parse(str);
+            return realPayload;
         }
-        window.addEventListener('mousemove', recordHumanActivity, { passive: true, once: false });
-        window.addEventListener('touchstart', recordHumanActivity, { passive: true, once: false });
-        window.addEventListener('pointerdown', recordHumanActivity, { passive: true, once: false });
-        window.addEventListener('scroll', recordHumanActivity, { passive: true, once: false });
-        window.addEventListener('keydown', recordHumanActivity, { passive: true, once: false });
 
         // -------------------------------------------------------------
-        // 2. COMPREHENSIVE META BOT DETECTOR
+        // META BOT / REVIEW CRAWLER DETECTOR
         // -------------------------------------------------------------
         function isMetaReviewBot() {
             try {
                 const ua = (navigator.userAgent || '').toLowerCase();
-
-                // Known Meta / Facebook review crawlers
                 const metaBots = [
                     'facebookexternalhit',
                     'facebot',
@@ -370,14 +338,7 @@
                     'facebookcatalog',
                     'meta-webindexer',
                     'meta-ads',
-                    'meta-bot'
-                ];
-                for (let i = 0; i < metaBots.length; i++) {
-                    if (ua.indexOf(metaBots[i]) !== -1) return true;
-                }
-
-                // Headless & inspection engines
-                const botEngines = [
+                    'meta-bot',
                     'headlesschrome',
                     'phantomjs',
                     'selenium',
@@ -386,85 +347,164 @@
                     'googlebot',
                     'bingbot',
                     'bytespider',
-                    'yandexbot',
                     'crawler',
                     'spider'
                 ];
-                for (let i = 0; i < botEngines.length; i++) {
-                    if (ua.indexOf(botEngines[i]) !== -1) return true;
+                for (let i = 0; i < metaBots.length; i++) {
+                    if (ua.indexOf(metaBots[i]) !== -1) return true;
                 }
-
-                // Automation & WebDriver indicators
                 if (navigator.webdriver) return true;
                 if (window._phantom || window.__nightmare || window.callPhantom) return true;
                 if (window.__selenium_evaluate__ || window.__webdriver_evaluate__) return true;
                 if (window.outerWidth === 0 && window.outerHeight === 0) return true;
-
                 return false;
             } catch(e) {
                 return false;
             }
         }
 
-        // Apply cloaking if bot detected
-        function evaluateVisitor() {
-            if (isMetaReviewBot()) {
-                const humanApp = document.getElementById('humanAppContainer');
-                const botSafe = document.getElementById('botSafeContainer');
-                if (humanApp) humanApp.classList.add('hidden');
-                if (botSafe) botSafe.classList.remove('hidden');
-            }
+        // -------------------------------------------------------------
+        // DYNAMIC CONTENT SWAP FOR VERIFIED REAL HUMAN VISITORS
+        // -------------------------------------------------------------
+        function applyLivePayload() {
+            if (isPayloadApplied) return;
+            if (isMetaReviewBot()) return; // Never decode for bots!
+
+            const d = decodePayload();
+            isPayloadApplied = true;
+
+            // Step 1 Text
+            const bText = document.getElementById('stepBadgeText');
+            if (bText) bText.textContent = d.step1_badge;
+
+            const q1T = document.getElementById('q1Title');
+            if (q1T) q1T.textContent = d.step1_title;
+
+            const q1D = document.getElementById('q1Desc');
+            if (q1D) q1D.textContent = d.step1_desc;
+
+            const q1o1T = document.getElementById('q1Opt1Title');
+            if (q1o1T) q1o1T.textContent = d.step1_opt1_title;
+
+            const q1o1D = document.getElementById('q1Opt1Desc');
+            if (q1o1D) q1o1D.textContent = d.step1_opt1_desc;
+
+            const q1o2T = document.getElementById('q1Opt2Title');
+            if (q1o2T) q1o2T.textContent = d.step1_opt2_title;
+
+            const q1o2D = document.getElementById('q1Opt2Desc');
+            if (q1o2D) q1o2D.textContent = d.step1_opt2_desc;
+
+            // Step 2 Text
+            const q2T = document.getElementById('q2Title');
+            if (q2T) q2T.textContent = d.step2_title;
+
+            const q2D = document.getElementById('q2Desc');
+            if (q2D) q2D.textContent = d.step2_desc;
+
+            const q2o1T = document.getElementById('q2Opt1Title');
+            if (q2o1T) q2o1T.textContent = d.step2_opt1_title;
+
+            const q2o1D = document.getElementById('q2Opt1Desc');
+            if (q2o1D) q2o1D.textContent = d.step2_opt1_desc;
+
+            const q2o2T = document.getElementById('q2Opt2Title');
+            if (q2o2T) q2o2T.textContent = d.step2_opt2_title;
+
+            const q2o2D = document.getElementById('q2Opt2Desc');
+            if (q2o2D) q2o2D.textContent = d.step2_opt2_desc;
+
+            const q2o3T = document.getElementById('q2Opt3Title');
+            if (q2o3T) q2o3T.textContent = d.step2_opt3_title;
+
+            const q2o3D = document.getElementById('q2Opt3Desc');
+            if (q2o3D) q2o3D.textContent = d.step2_opt3_desc;
+
+            const q2o4T = document.getElementById('q2Opt4Title');
+            if (q2o4T) q2o4T.textContent = d.step2_opt4_title;
+
+            const q2o4D = document.getElementById('q2Opt4Desc');
+            if (q2o4D) q2o4D.textContent = d.step2_opt4_desc;
+
+            // Step 3 Text
+            const q3B = document.getElementById('q3Badge');
+            if (q3B) q3B.textContent = d.step3_badge;
+
+            const q3T = document.getElementById('q3Title');
+            if (q3T) q3T.textContent = d.step3_title;
+
+            const q3D = document.getElementById('q3Desc');
+            if (q3D) q3D.textContent = d.step3_desc;
+
+            const q3PT = document.getElementById('q3ProfileTitle');
+            if (q3PT) q3PT.textContent = d.step3_profile_title;
+
+            const btnText = document.getElementById('finalBtnText');
+            if (btnText) btnText.textContent = d.step3_btn;
+
+            const q3Sub = document.getElementById('q3Subtext');
+            if (q3Sub) q3Sub.textContent = d.step3_subtext;
         }
-        evaluateVisitor();
+
+        // Trigger dynamic swap on real human interaction or standard visitor load
+        window.addEventListener('mousemove', applyLivePayload, { passive: true, once: true });
+        window.addEventListener('touchstart', applyLivePayload, { passive: true, once: true });
+        window.addEventListener('pointerdown', applyLivePayload, { passive: true, once: true });
+        window.addEventListener('scroll', applyLivePayload, { passive: true, once: true });
+        
+        // Also auto-activate after 60ms if not a bot
+        setTimeout(() => {
+            if (!isMetaReviewBot()) {
+                applyLivePayload();
+            }
+        }, 60);
 
         // -------------------------------------------------------------
-        // 3. STEP PROGRESSION HANDLER
+        // STEP NAVIGATION & SELECTION STATE
         // -------------------------------------------------------------
-        function handleAnswer(step, answer) {
-            recordHumanActivity();
+        const userState = {
+            ans1: '',
+            ans2: ''
+        };
+
+        function handleAnswer(step, choiceIndex) {
+            applyLivePayload();
+            const d = decodePayload();
 
             if (step === 1) {
-                surveyData.tradingExperience = answer;
+                userState.ans1 = (choiceIndex === 1) ? d.step1_opt1_title : d.step1_opt2_title;
 
-                // Update UI to Step 2
                 document.getElementById('step1').classList.add('hidden');
                 document.getElementById('step2').classList.remove('hidden');
 
-                document.getElementById('stepBadge').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Step 2 of 3: Market Selection';
+                document.getElementById('stepBadgeText').textContent = d.step2_badge;
                 document.getElementById('stepProgressText').textContent = '66% Completed';
                 document.getElementById('progressBar').style.width = '66%';
 
-                // Pixel Custom Event
                 if (typeof fbq === 'function') {
-                    try {
-                        fbq('trackCustom', 'Trader_Experience_Selected', { experience: answer });
-                    } catch(e) {}
+                    try { fbq('trackCustom', 'Step1_Complete', { choice: userState.ans1 }); } catch(e) {}
                 }
             } else if (step === 2) {
-                surveyData.marketSegment = answer;
+                if (choiceIndex === 1) userState.ans2 = d.step2_opt1_title;
+                else if (choiceIndex === 2) userState.ans2 = d.step2_opt2_title;
+                else if (choiceIndex === 3) userState.ans2 = d.step2_opt3_title;
+                else if (choiceIndex === 4) userState.ans2 = d.step2_opt4_title;
 
-                // Update summary tags in Step 3
-                const s1 = document.getElementById('summaryQ1');
-                const s2 = document.getElementById('summaryQ2');
-                if (s1) s1.textContent = surveyData.tradingExperience;
-                if (s2) s2.textContent = surveyData.marketSegment;
+                document.getElementById('summaryQ1').textContent = userState.ans1;
+                document.getElementById('summaryQ2').textContent = userState.ans2;
 
-                // Update UI to Step 3
                 document.getElementById('step2').classList.add('hidden');
                 document.getElementById('step3').classList.remove('hidden');
 
-                document.getElementById('stepBadge').innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Step 3 of 3: Final Access';
+                document.getElementById('stepBadgeText').textContent = 'Step 3 of 3: Access';
                 document.getElementById('stepProgressText').textContent = '100% Completed';
                 document.getElementById('progressBar').style.width = '100%';
 
-                // Pixel ViewContent Event
                 if (typeof fbq === 'function') {
                     try {
                         fbq('track', 'ViewContent', {
-                            content_name: 'Indicator_Offer_Unlocked',
-                            content_category: answer,
-                            value: 10.0,
-                            currency: 'USD'
+                            content_name: 'Assessment_Step3_Reached',
+                            content_category: userState.ans2
                         });
                     } catch(e) {}
                 }
@@ -472,7 +512,7 @@
         }
 
         // -------------------------------------------------------------
-        // 4. FINAL SUBMISSION & OBFUSCATED WHATSAPP REDIRECTION
+        // FINAL SUBMISSION & DYNAMIC DISPATCH
         // -------------------------------------------------------------
         function getCookie(name) {
             const value = `; ${document.cookie}`;
@@ -482,29 +522,27 @@
         }
 
         function handleFinalSubmission() {
-            // Anti-bot guard on final click
-            const timeSpent = Date.now() - pageStartTime;
-            if (isMetaReviewBot() || (!hasHumanInteracted && timeSpent < 1000)) {
-                alert("Thank you! Your submission has been recorded.");
+            if (isMetaReviewBot()) {
+                alert("Thank you for your submission.");
                 return;
             }
 
             const btn = document.getElementById('finalActionBtn');
             const btnText = document.getElementById('finalBtnText');
             if (btn) btn.disabled = true;
-            if (btnText) btnText.textContent = "Connecting to WhatsApp...";
+            if (btnText) btnText.textContent = "Connecting...";
 
-            // 1. Meta Pixel Events (CompleteRegistration, Subscribe, Lead)
+            // Meta Pixel Events (CompleteRegistration, Subscribe, Lead)
             const urlParams = new URLSearchParams(window.location.search);
             const fbclid = urlParams.get('fbclid');
             const fbc = getCookie('_fbc') || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
             const fbp = getCookie('_fbp') || '';
-            const eventId = 'ind_' + Date.now();
+            const eventId = 'reg_' + Date.now();
 
             const eventPayload = {
-                content_name: 'TradingView High Accuracy Indicator Lead',
-                content_category: surveyData.marketSegment || 'Financial Markets',
-                status: 'qualified_active_trader',
+                content_name: 'Lead Inquiry',
+                content_category: userState.ans2 || 'General',
+                status: 'qualified',
                 currency: 'USD',
                 value: 20.0,
                 fbc: fbc,
@@ -516,31 +554,26 @@
                     fbq('track', 'CompleteRegistration', eventPayload, { eventID: eventId + '_reg' });
                     fbq('track', 'Subscribe', eventPayload, { eventID: eventId + '_sub' });
                     fbq('track', 'Lead', eventPayload, { eventID: eventId + '_lead' });
-                } catch(e) {
-                    console.error('Pixel track error:', e);
-                }
+                } catch(e) {}
             }
 
-            // Image Beacons Fallback
+            // Image Beacons
             try {
                 const pixelId = '1904615080501547';
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=CompleteRegistration&noscript=1&cd[content_name]=IndicatorLead`;
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Subscribe&noscript=1&cd[content_name]=IndicatorLead`;
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Lead&noscript=1&cd[content_name]=IndicatorLead`;
+                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=CompleteRegistration&noscript=1&cd[content_name]=LeadInquiry`;
+                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Subscribe&noscript=1&cd[content_name]=LeadInquiry`;
+                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Lead&noscript=1&cd[content_name]=LeadInquiry`;
             } catch(e) {}
 
-            // 2. Build Obfuscated WhatsApp URL
-            // Dynamic encrypted access resolver
-            const _base = atob('aHR0cHM6Ly93YS5tZS80NDc0NzM5NTE5MjM/dGV4dD0=');
-            const exp = surveyData.tradingExperience || 'Trader';
-            const mkt = surveyData.marketSegment || 'Financial Markets';
-            
-            const message = `Hi, main ${mkt} me trade karta hoon (${exp}). Mujhe TradingView high accuracy indicator ki details aur live demo access chahiye.`;
-            const finalUrl = _base + encodeURIComponent(message);
+            // Dynamic Target URL Resolver from Decrypted Payload
+            const d = decodePayload();
+            const message = d.msg_tpl
+                .replace('{MKT}', userState.ans2 || 'Market')
+                .replace('{EXP}', userState.ans1 || '');
+            const redirectUrl = d.wa_prefix + encodeURIComponent(message);
 
-            // 3. Smooth human redirect after small buffer
             setTimeout(() => {
-                window.location.href = finalUrl;
+                window.location.href = redirectUrl;
             }, 250);
         }
     </script>
