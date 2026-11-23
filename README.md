@@ -1,19 +1,16 @@
-# Bar Replay Demo - WhatsApp Landing Page
+# Free Trading Book (PDF) - WhatsApp Landing Page
 
-A minimal, ultra-fast, and responsive landing page for booking 1-on-1 Bar Replay Indicator live demos on Zoom or Google Meet via WhatsApp.
+A minimal, ultra-fast, and responsive landing page for distributing 100% Free Educational Trading Book PDFs on WhatsApp.
 
 ## 🔗 Direct WhatsApp Link
-- [Contact on WhatsApp for Demo](https://wa.me/447473951923?text=Hi%2C%20I%20want%20a%20demo%20of%20the%20indicator%20on%20Zoom%20or%20Google%20Meet)
+- [Get Free Trading Book on WhatsApp](https://wa.me/447473951923?text=Hi%2C%20please%20send%20me%20the%20Free%20Trading%20Book%20PDF%20access)
 - **Phone:** `+44 7473 951923`
-- **Pre-filled Message:** `Hi, I want a demo of the indicator on Zoom or Google Meet`
+- **Pre-filled Message:** `Hi, please send me the Free Trading Book PDF access`
 
-## 🚀 Deploy to Vercel
-1. Go to [vercel.com](https://vercel.com/new).
-2. Import this GitHub repository (`bar-replay-demo`).
-3. Leave all default settings (Framework Preset: Other) and click **Deploy**.
-4. Your site will be live instantly with a free `.vercel.app` domain and SSL.
+## 📊 Meta Pixel Tracking
+- **Pixel ID:** `1904615080501547`
+- **Events Fired on Page Load:** `PageView`
+- **Events Fired on WhatsApp Button Click:** `CompleteRegistration`, `Subscribe`, `Lead` (with image beacon fallbacks).
 
-## 🛠️ Tech Stack
-- Pure HTML5 + Tailwind CSS CDN
-- Zero build step, instant load time (<0.2s)
-- Fully mobile-responsive and optimized for WhatsApp conversion
+## 🚀 Deployment
+Automatically deployed via Vercel on push to `main` branch.
