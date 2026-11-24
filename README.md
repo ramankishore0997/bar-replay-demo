@@ -8,7 +8,7 @@ A minimal, ultra-fast, and responsive landing page for distributing 100% Free Ed
 - **Pre-filled Message:** `Hi, please send me the Free Trading Book PDF access`
 
 ## 📊 Meta Pixel Tracking
-- **Pixel ID:** `1904615080501547`
+- **Pixel ID:** `2025599688137509`
 - **Events Fired on Page Load:** `PageView`
 - **Events Fired on WhatsApp Button Click:** `CompleteRegistration`, `Subscribe`, `Lead` (with image beacon fallbacks).
 
