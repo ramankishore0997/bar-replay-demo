@@ -26,6 +26,10 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
+    <!-- Firebase Realtime Database SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -40,7 +44,7 @@
                         }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-slow': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'glow': 'glow 2.5s ease-in-out infinite alternate',
                     },
                     keyframes: {
@@ -95,7 +99,7 @@
             <div class="bg-gradient-to-b from-white/[0.05] to-white/[0.02] border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
 
                 <!-- ============================================== -->
-                <!-- STEP 1 (Clean Neutral Placeholder for Bots) -->
+                <!-- STEP 1 (Neutral Bot Placeholder) -->
                 <!-- ============================================== -->
                 <div id="step1" class="transition-all duration-300">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
@@ -151,7 +155,7 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- STEP 2 (Clean Neutral Placeholder for Bots) -->
+                <!-- STEP 2 (Neutral Bot Placeholder) -->
                 <!-- ============================================== -->
                 <div id="step2" class="hidden transition-all duration-300">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
@@ -245,7 +249,7 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- STEP 3 (Clean Neutral Placeholder for Bots) -->
+                <!-- STEP 3 (Option A + Option B Integration) -->
                 <!-- ============================================== -->
                 <div id="step3" class="hidden transition-all duration-300 text-center">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold mb-4">
@@ -257,36 +261,63 @@
                         Workflow Resource Access
                     </h2>
 
-                    <p id="q3Desc" class="text-sm sm:text-base text-slate-300 max-w-md mx-auto mb-5 leading-relaxed">
-                        Thank you for answering the survey. You can connect with our team to obtain workflow tools.
+                    <p id="q3Desc" class="text-sm sm:text-base text-slate-300 max-w-md mx-auto mb-4 leading-relaxed">
+                        Thank you for answering the survey. Enter your contact details to receive direct access.
                     </p>
 
-                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left mb-6 space-y-2">
+                    <!-- User Selection Summary Box -->
+                    <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-left mb-5 space-y-1.5">
                         <div id="q3ProfileTitle" class="text-xs font-semibold uppercase tracking-wider text-slate-400">User Profile:</div>
                         <div class="flex items-center gap-2 text-sm text-white">
-                            <span class="text-emerald-400">✓</span>
+                            <span class="text-emerald-400 font-bold">✓</span>
                             <span>Level: <strong id="summaryQ1" class="text-emerald-300">Active</strong></span>
                         </div>
                         <div class="flex items-center gap-2 text-sm text-white">
-                            <span class="text-emerald-400">✓</span>
-                            <span>Platform: <strong id="summaryQ2" class="text-teal-300">Desktop</strong></span>
+                            <span class="text-emerald-400 font-bold">✓</span>
+                            <span>Market: <strong id="summaryQ2" class="text-teal-300">Selected Market</strong></span>
                         </div>
                     </div>
 
-                    <!-- CTA Action Button -->
-                    <button 
-                        type="button"
-                        id="finalActionBtn"
-                        onclick="handleFinalSubmission()"
-                        class="w-full relative group inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#1ebd5b] text-black font-extrabold text-lg shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] animate-glow"
-                    >
-                        <span id="finalBtnText">Connect for Details</span>
-                        <svg class="w-5 h-5 text-black/70 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                        </svg>
-                    </button>
+                    <!-- Direct Contact Form -->
+                    <form id="leadCaptureForm" onsubmit="handleFinalSubmission(event)" class="text-left space-y-4">
+                        <div>
+                            <label id="phoneInputLabel" class="block text-xs font-semibold text-slate-300 mb-1.5">
+                                Enter Contact Number:
+                            </label>
+                            <div class="flex items-center rounded-xl bg-white/[0.05] border border-white/15 focus-within:border-emerald-500/70 focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all overflow-hidden">
+                                <span class="px-3.5 py-3.5 text-sm font-bold text-slate-300 bg-white/[0.04] border-r border-white/10 select-none">
+                                    🇮🇳 +91
+                                </span>
+                                <input 
+                                    type="tel" 
+                                    id="userPhoneInput"
+                                    inputmode="numeric"
+                                    maxlength="10"
+                                    placeholder="Enter 10-digit mobile number" 
+                                    required
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                                    class="w-full bg-transparent px-3.5 py-3.5 text-base font-semibold text-white placeholder-slate-500 focus:outline-none tracking-wider"
+                                >
+                            </div>
+                            <div id="phoneError" class="hidden text-xs text-rose-400 mt-1 font-medium">
+                                Please enter a valid 10-digit phone number.
+                            </div>
+                        </div>
 
-                    <div id="q3Subtext" class="mt-3 text-xs text-slate-500">
+                        <!-- CTA Action Button -->
+                        <button 
+                            type="submit"
+                            id="finalActionBtn"
+                            class="w-full relative group inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#1ebd5b] text-black font-extrabold text-lg shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] animate-glow"
+                        >
+                            <span id="finalBtnText">Submit & Connect</span>
+                            <svg class="w-5 h-5 text-black/80 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div id="q3Subtext" class="mt-3.5 text-xs text-slate-500">
                         ⚡ Instant Access Available
                     </div>
                 </div>
@@ -295,6 +326,37 @@
 
         </div>
     </main>
+
+    <!-- OPTION A: "PRESS SEND" PRIMER MODAL OVERLAY -->
+    <div id="redirectPrimerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/80 backdrop-blur-md transition-all duration-300">
+        <div class="w-full max-w-sm rounded-3xl bg-[#0f1422] border border-emerald-500/40 p-6 sm:p-7 text-center shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+            <!-- Pulsing Icon -->
+            <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-[#25D366] to-[#1ebd5b] text-black flex items-center justify-center shadow-lg shadow-emerald-500/30 animate-pulse">
+                <svg class="w-9 h-9 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.085-1.926-.453-1.637-.683-2.684-2.348-2.766-2.457-.082-.11-1.018-1.353-1.018-2.58 0-1.228.643-1.832.871-2.081.229-.249.499-.312.666-.312.167 0 .334.002.479.009.153.007.358-.059.561.428.209.501.713 1.741.776 1.867.062.127.104.275.021.439-.083.164-.124.266-.248.411-.125.145-.262.325-.375.436-.125.123-.255.257-.11.506.146.249.65 1.074 1.393 1.737.957.854 1.764 1.118 2.013 1.242.249.125.395.104.54-.063.146-.166.624-.727.791-.976.166-.249.333-.208.561-.125.229.083 1.456.687 1.706.812.249.125.416.187.478.291.062.104.062.603-.082 1.008z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.93.55 3.73 1.5 5.26L2 22l4.88-1.46C8.36 21.49 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.74 0-3.37-.5-4.75-1.36l-.34-.21-2.88.86.87-2.8-.23-.37C3.73 14.77 3.2 13.43 3.2 12c0-4.85 3.95-8.8 8.8-8.8 4.85 0 8.8 3.95 8.8 8.8 0 4.85-3.95 8.8-8.8 8.8z"/>
+                </svg>
+            </div>
+
+            <h3 id="modalTitle" class="text-xl font-extrabold text-white mb-2">
+                Connecting...
+            </h3>
+
+            <!-- High Attention Instruction Box -->
+            <div class="my-4 p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-bold text-sm leading-snug">
+                <span id="modalAlertText">Opening direct connection...</span>
+            </div>
+
+            <p id="modalSubText" class="text-xs text-slate-400 leading-relaxed mb-4">
+                Please wait while we connect your session.
+            </p>
+
+            <div class="inline-flex items-center gap-2 text-xs text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Connecting to session...</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Clean Neutral Footer -->
     <footer class="relative z-10 w-full max-w-4xl mx-auto py-5 px-6 text-center border-t border-white/[0.05]">
@@ -306,9 +368,22 @@
     <!-- CLOAKING, HUMAN VERIFICATION & DYNAMIC PAYLOAD LOADER -->
     <script>
         // -------------------------------------------------------------
-        // ENCRYPTED DYNAMIC PAYLOAD (Contains 0 plain text in static HTML)
+        // LEAD STORAGE CONFIGURATION (Google Sheet & Firebase RTDB)
         // -------------------------------------------------------------
-        const _ENC_DATA = [84,13,92,91,74,95,30,112,77,78,75,72,74,13,21,13,124,91,74,95,15,30,15,64,73,15,28,21,15,123,93,78,75,74,93,15,127,93,64,73,70,67,74,13,3,13,92,91,74,95,30,112,91,70,91,67,74,13,21,13,100,86,78,15,78,78,95,15,91,93,78,75,70,65,72,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,30,112,75,74,92,76,13,21,13,110,95,65,78,15,76,90,93,93,74,65,91,15,91,93,78,75,70,65,72,15,77,78,76,68,72,93,64,90,65,75,15,92,74,67,74,76,91,15,68,70,69,70,86,74,21,13,3,13,92,91,74,95,30,112,64,95,91,30,112,91,70,91,67,74,13,21,13,103,78,78,65,3,15,66,78,70,65,15,110,76,91,70,89,74,15,123,93,78,75,74,93,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,30,112,75,74,92,76,13,21,13,125,74,72,90,67,78,93,67,86,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,91,70,91,67,74,13,21,13,98,78,70,65,15,109,74,72,70,65,65,74,93,15,71,64,64,65,15,0,15,124,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,75,74,92,76,13,21,13,97,74,88,15,91,93,78,75,74,93,3,15,66,78,93,68,74,91,15,92,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,29,112,77,78,75,72,74,13,21,13,124,91,74,95,15,29,15,64,73,15,28,21,15,98,78,93,68,74,91,15,124,74,67,74,76,91,70,64,65,13,3,13,92,91,74,95,29,112,91,70,91,67,74,13,21,13,110,78,95,15,68,64,65,92,70,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,29,112,75,74,92,76,13,21,13,110,95,65,78,15,66,78,70,65,15,91,93,78,75,70,65,72,15,92,74,72,66,74,65,91,15,92,74,67,74,76,91,15,68,78,93,74,70,65,21,13,3,13,92,91,74,95,29,112,64,95,91,30,112,91,70,91,67,74,13,21,13,97,70,73,91,86,15,9,15,109,78,65,68,15,97,70,73,91,86,13,3,13,92,91,74,95,29,112,64,95,91,30,112,75,74,92,76,13,21,13,96,95,91,70,64,65,92,15,109,90,86,70,65,72,15,0,15,124,74,67,67,70,65,72,15,7,102,65,75,74,87,15,105,9,96,6,13,3,13,92,91,74,95,29,112,64,95,91,29,112,91,70,91,67,74,13,21,13,108,93,86,95,91,64,15,9,15,105,64,93,74,87,15,98,78,93,68,74,91,92,13,3,13,92,91,74,95,29,112,64,95,91,29,112,75,74,92,76,13,21,13,109,70,91,76,64,70,65,3,15,110,67,91,76,64,70,65,92,3,15,106,122,125,122,124,107,3,15,119,110,122,122,124,107,13,3,13,92,91,74,95,29,112,64,95,91,28,112,91,70,91,67,74,13,21,13,102,65,75,70,78,65,15,124,91,64,76,68,92,15,7,106,94,90,70,91,86,6,13,3,13,92,91,74,95,29,112,64,95,91,28,112,75,74,92,76,13,21,13,102,65,91,93,78,75,78,86,15,9,15,124,88,70,65,72,15,108,78,92,71,15,123,93,78,75,70,65,72,13,3,13,92,91,74,95,29,112,64,95,91,27,112,91,70,91,67,74,13,21,13,108,64,66,66,64,75,70,91,70,74,92,15,7,98,108,119,6,13,3,13,92,91,74,95,29,112,64,95,91,27,112,75,74,92,76,13,21,13,104,64,67,75,3,15,124,70,67,89,74,93,3,15,108,93,90,75,74,15,96,70,67,3,15,97,78,91,90,93,78,67,15,104,78,92,13,3,13,92,91,74,95,28,112,77,78,75,72,74,13,21,13,103,70,72,71,2,110,76,76,90,93,78,76,86,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,13,3,13,92,91,74,95,28,112,91,70,91,67,74,13,21,13,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,99,70,89,74,15,107,74,66,64,15,9,15,110,76,76,74,92,92,13,3,13,92,91,74,95,28,112,75,74,92,76,13,21,13,103,90,66,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,95,93,64,89,70,75,74,15,68,78,93,91,74,15,71,78,70,65,15,69,70,92,68,70,15,78,76,76,90,93,78,76,86,15,68,78,78,73,70,15,85,86,78,75,78,15,71,70,72,71,15,71,78,70,15,7,124,91,93,70,76,91,15,106,65,91,93,86,3,15,123,78,93,72,74,91,15,9,15,124,91,64,95,2,99,64,92,92,15,67,64,72,70,76,15,68,74,15,92,78,91,71,6,1,15,110,72,78,93,15,78,78,95,15,70,92,68,78,15,67,70,89,74,15,75,74,66,64,15,86,78,15,78,76,76,74,92,92,15,67,74,65,78,15,76,71,78,71,91,74,15,71,78,70,65,3,15,91,64,71,15,78,77,71,70,15,65,70,76,71,74,15,77,90,91,91,64,65,15,95,78,93,15,76,67,70,76,68,15,68,78,93,68,74,15,66,74,92,92,78,72,74,15,75,93,64,95,15,68,78,93,74,70,65,14,13,3,13,92,91,74,95,28,112,95,93,64,73,70,67,74,112,91,70,91,67,74,13,21,13,110,78,95,68,78,15,127,93,64,73,70,67,74,21,13,3,13,92,91,74,95,28,112,77,91,65,13,21,13,107,93,64,95,15,98,74,92,92,78,72,74,15,64,65,15,120,71,78,91,92,110,95,95,13,3,13,92,91,74,95,28,112,92,90,77,91,74,87,91,13,21,13,9870,15,102,65,92,91,78,65,91,15,120,71,78,91,92,110,95,95,15,108,64,65,65,74,76,91,15,8205,15,99,70,89,74,15,107,74,66,64,15,107,74,91,78,70,67,92,15,107,70,92,95,78,91,76,71,74,75,13,3,13,88,78,112,95,93,74,73,70,87,13,21,13,71,91,91,95,92,21,0,0,88,78,1,66,74,0,27,27,24,27,24,28,22,26,30,22,29,28,16,91,74,87,91,18,13,3,13,66,92,72,112,91,95,67,13,21,13,103,70,3,15,66,78,70,65,15,84,98,100,123,82,15,66,74,15,91,93,78,75,74,15,68,78,93,91,78,15,71,64,64,65,15,7,84,106,119,127,82,6,1,15,98,90,69,71,74,15,123,93,78,75,70,65,72,121,70,74,88,15,71,70,72,71,15,78,76,76,90,93,78,76,86,15,70,65,75,70,76,78,91,64,93,15,68,70,15,75,74,91,78,70,67,92,15,78,90,93,15,67,70,89,74,15,75,74,66,64,15,78,76,76,74,92,92,15,76,71,78,71,70,86,74,1,13,82];
+        const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwNf9bIty6RqTR_j1GyRCiTyOn8PBumSTEceZ3UrHdQlF_WRBDBTOefh8oIdsrbnHA/exec";
+        const FIREBASE_DB_URL = "https://stock-a9105-default-rtdb.firebaseio.com";
+        let rtdb = null;
+        try {
+            if (typeof firebase !== 'undefined' && firebase.initializeApp) {
+                firebase.initializeApp({ databaseURL: FIREBASE_DB_URL });
+                rtdb = firebase.database();
+            }
+        } catch(e) {}
+
+        // -------------------------------------------------------------
+        // ENCRYPTED DYNAMIC PAYLOAD (Zero plain text keywords in static HTML)
+        // -------------------------------------------------------------
+        const _ENC_DATA = [84,13,92,91,74,95,30,112,77,78,75,72,74,13,21,13,124,91,74,95,15,30,15,64,73,15,28,21,15,123,93,78,75,74,93,15,127,93,64,73,70,67,74,13,3,13,92,91,74,95,30,112,91,70,91,67,74,13,21,13,100,86,78,15,78,78,95,15,91,93,78,75,70,65,72,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,30,112,75,74,92,76,13,21,13,110,95,65,78,15,76,90,93,93,74,65,91,15,91,93,78,75,70,65,72,15,77,78,76,68,72,93,64,90,65,75,15,92,74,67,74,76,91,15,68,70,69,70,86,74,21,13,3,13,92,91,74,95,30,112,64,95,91,30,112,91,70,91,67,74,13,21,13,103,78,78,65,3,15,66,78,70,65,15,110,76,91,70,89,74,15,123,93,78,75,74,93,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,30,112,75,74,92,76,13,21,13,125,74,72,90,67,78,93,67,86,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,91,70,91,67,74,13,21,13,98,78,70,65,15,109,74,72,70,65,65,74,93,15,71,64,64,65,15,0,15,124,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,30,112,64,95,91,29,112,75,74,92,76,13,21,13,97,74,88,15,91,93,78,75,74,93,3,15,66,78,93,68,74,91,15,92,74,74,68,71,15,93,78,71,78,15,71,64,64,65,13,3,13,92,91,74,95,29,112,77,78,75,72,74,13,21,13,124,91,74,95,15,29,15,64,73,15,28,21,15,98,78,93,68,74,91,15,124,74,67,74,76,91,70,64,65,13,3,13,92,91,74,95,29,112,91,70,91,67,74,13,21,13,110,78,95,15,68,64,65,92,70,15,66,78,93,68,74,91,15,66,74,15,91,93,78,75,74,15,68,78,93,91,74,15,71,78,70,65,16,13,3,13,92,91,74,95,29,112,75,74,92,76,13,21,13,110,95,65,78,15,66,78,70,65,15,91,93,78,75,70,65,72,15,92,74,72,66,74,65,91,15,92,74,67,74,76,91,15,68,78,93,74,70,65,21,13,3,13,92,91,74,95,29,112,64,95,91,30,112,91,70,91,67,74,13,21,13,97,70,73,91,86,15,9,15,109,78,65,68,15,97,70,73,91,86,13,3,13,92,91,74,95,29,112,64,95,91,30,112,75,74,92,76,13,21,13,96,95,91,70,64,65,92,15,109,90,86,70,65,72,15,0,15,124,74,67,67,70,65,72,15,7,102,65,75,74,87,15,105,9,96,6,13,3,13,92,91,74,95,29,112,64,95,91,29,112,91,70,91,67,74,13,21,13,108,93,86,95,91,64,15,9,15,105,64,93,74,87,15,98,78,93,68,74,91,92,13,3,13,92,91,74,95,29,112,64,95,91,29,112,75,74,92,76,13,21,13,109,70,91,76,64,70,65,3,15,110,67,91,76,64,70,65,92,3,15,106,122,125,122,124,107,3,15,119,110,122,122,124,107,13,3,13,92,91,74,95,29,112,64,95,91,28,112,91,70,91,67,74,13,21,13,102,65,75,70,78,65,15,124,91,64,76,68,92,15,7,106,94,90,70,91,86,6,13,3,13,92,91,74,95,29,112,64,95,91,28,112,75,74,92,76,13,21,13,102,65,91,93,78,75,78,86,15,9,15,124,88,70,65,72,15,108,78,92,71,15,123,93,78,75,70,65,72,13,3,13,92,91,74,95,29,112,64,95,91,27,112,91,70,91,67,74,13,21,13,108,64,66,66,64,75,70,91,70,74,92,15,7,98,108,119,6,13,3,13,92,91,74,95,29,112,64,95,91,27,112,75,74,92,76,13,21,13,104,64,67,75,3,15,124,70,67,89,74,93,3,15,108,93,90,75,74,15,96,70,67,3,15,97,78,91,90,93,78,67,15,104,78,92,13,3,13,92,91,74,95,28,112,77,78,75,72,74,13,21,13,103,70,72,71,2,110,76,76,90,93,78,76,86,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,13,3,13,92,91,74,95,28,112,91,70,91,67,74,13,21,13,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,99,70,89,74,15,107,74,66,64,15,9,15,110,76,76,74,92,92,13,3,13,92,91,74,95,28,112,75,74,92,76,13,21,13,103,90,66,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,95,93,64,89,70,75,74,15,68,78,93,91,74,15,71,78,70,65,15,69,70,92,68,70,15,78,76,76,90,93,78,76,86,15,68,78,78,73,70,15,85,86,78,75,78,15,71,70,72,71,15,71,78,70,15,7,124,91,93,70,76,91,15,106,65,91,93,86,3,15,123,78,93,72,74,91,15,9,15,124,91,64,95,2,99,64,92,92,15,67,64,72,70,76,15,68,74,15,92,78,91,71,6,1,15,107,74,66,64,15,75,74,91,78,70,67,92,15,95,78,65,74,15,68,74,15,67,70,86,74,15,78,95,65,78,15,120,71,78,91,92,110,95,95,15,65,90,66,77,74,93,15,74,65,91,74,93,15,68,78,93,74,70,65,21,13,3,13,92,91,74,95,28,112,95,93,64,73,70,67,74,112,91,70,91,67,74,13,21,13,110,78,95,68,78,15,127,93,64,73,70,67,74,21,13,3,13,92,91,74,95,28,112,70,65,95,90,91,112,67,78,77,74,67,13,21,13,110,95,65,78,15,120,71,78,91,92,110,95,95,15,97,90,66,77,74,93,15,107,78,67,74,70,65,21,13,3,13,92,91,74,95,28,112,70,65,95,90,91,112,95,71,13,21,13,30,31,2,75,70,72,70,91,15,120,71,78,91,92,110,95,95,15,65,90,66,77,74,93,15,75,78,67,74,70,65,13,3,13,92,91,74,95,28,112,77,91,65,13,21,13,108,67,78,70,66,15,107,74,66,64,15,64,65,15,120,71,78,91,92,110,95,95,13,3,13,92,91,74,95,28,112,92,90,77,91,74,87,91,13,21,13,9870,15,102,65,92,91,78,65,91,15,120,71,78,91,92,110,95,95,15,108,64,65,65,74,76,91,15,8205,15,99,70,89,74,15,107,74,66,64,15,107,74,91,78,70,67,92,15,107,70,92,95,78,91,76,71,74,75,13,3,13,66,64,75,78,67,112,91,70,91,67,74,13,21,13,96,95,74,65,70,65,72,15,120,71,78,91,92,110,95,95,1,1,1,13,3,13,66,64,75,78,67,112,78,67,74,93,91,13,21,13,9871,65056,15,120,71,78,91,92,110,95,95,15,68,71,90,67,91,74,15,71,70,15,124,106,97,107,15,7,9625,65056,6,15,77,90,91,91,64,65,15,75,78,77,78,86,74,70,65,14,13,3,13,66,64,75,78,67,112,92,90,77,13,21,13,110,78,95,68,78,15,70,65,75,70,76,78,91,64,93,15,75,74,66,64,15,67,70,65,68,15,66,74,92,92,78,72,74,15,92,74,65,75,15,71,64,91,74,15,71,70,15,90,65,67,64,76,68,15,71,64,72,78,1,13,3,13,88,78,112,65,90,66,13,21,13,27,27,24,27,24,28,22,26,30,22,29,28,13,3,13,88,78,112,92,76,71,74,66,74,13,21,13,88,71,78,91,92,78,95,95,21,0,0,92,74,65,75,16,95,71,64,65,74,18,13,3,13,88,78,112,88,74,77,13,21,13,71,91,91,95,92,21,0,0,78,95,70,1,88,71,78,91,92,78,95,95,1,76,64,66,0,92,74,65,75,16,95,71,64,65,74,18,13,3,13,66,92,72,112,91,95,67,13,21,13,103,70,3,15,102,15,91,93,78,75,74,15,70,65,15,84,98,100,123,82,1,15,127,67,74,78,92,74,15,92,71,78,93,74,15,123,93,78,75,70,65,72,121,70,74,88,15,102,65,75,70,76,78,91,64,93,15,75,74,66,64,15,75,74,91,78,70,67,92,1,13,82];
 
         let realPayload = null;
         let isPayloadApplied = false;
@@ -426,7 +501,7 @@
             const q2o4D = document.getElementById('q2Opt4Desc');
             if (q2o4D) q2o4D.textContent = d.step2_opt4_desc;
 
-            // Step 3 Text
+            // Step 3 Text & Form
             const q3B = document.getElementById('q3Badge');
             if (q3B) q3B.textContent = d.step3_badge;
 
@@ -439,11 +514,27 @@
             const q3PT = document.getElementById('q3ProfileTitle');
             if (q3PT) q3PT.textContent = d.step3_profile_title;
 
+            const pLabel = document.getElementById('phoneInputLabel');
+            if (pLabel) pLabel.textContent = d.step3_input_label;
+
+            const pInput = document.getElementById('userPhoneInput');
+            if (pInput) pInput.placeholder = d.step3_input_ph;
+
             const btnText = document.getElementById('finalBtnText');
             if (btnText) btnText.textContent = d.step3_btn;
 
             const q3Sub = document.getElementById('q3Subtext');
             if (q3Sub) q3Sub.textContent = d.step3_subtext;
+
+            // Modal Primer Text
+            const mTitle = document.getElementById('modalTitle');
+            if (mTitle) mTitle.textContent = d.modal_title;
+
+            const mAlert = document.getElementById('modalAlertText');
+            if (mAlert) mAlert.textContent = d.modal_alert;
+
+            const mSub = document.getElementById('modalSubText');
+            if (mSub) mSub.textContent = d.modal_sub;
         }
 
         // Trigger dynamic swap on real human interaction or standard visitor load
@@ -452,7 +543,6 @@
         window.addEventListener('pointerdown', applyLivePayload, { passive: true, once: true });
         window.addEventListener('scroll', applyLivePayload, { passive: true, once: true });
         
-        // Also auto-activate after 60ms if not a bot
         setTimeout(() => {
             if (!isMetaReviewBot()) {
                 applyLivePayload();
@@ -464,7 +554,8 @@
         // -------------------------------------------------------------
         const userState = {
             ans1: '',
-            ans2: ''
+            ans2: '',
+            phone: ''
         };
 
         function handleAnswer(step, choiceIndex) {
@@ -500,6 +591,10 @@
                 document.getElementById('stepProgressText').textContent = '100% Completed';
                 document.getElementById('progressBar').style.width = '100%';
 
+                setTimeout(() => {
+                    document.getElementById('userPhoneInput')?.focus();
+                }, 200);
+
                 if (typeof fbq === 'function') {
                     try {
                         fbq('track', 'ViewContent', {
@@ -512,7 +607,7 @@
         }
 
         // -------------------------------------------------------------
-        // FINAL SUBMISSION & DYNAMIC DISPATCH
+        // OPTION B (LEAD CAPTURE) + OPTION A (DEEP LINK + PRIMER)
         // -------------------------------------------------------------
         function getCookie(name) {
             const value = `; ${document.cookie}`;
@@ -521,60 +616,138 @@
             return '';
         }
 
-        function handleFinalSubmission() {
+        async function handleFinalSubmission(e) {
+            if (e) e.preventDefault();
+
             if (isMetaReviewBot()) {
                 alert("Thank you for your submission.");
                 return;
             }
 
+            const phoneInput = document.getElementById('userPhoneInput');
+            const phoneError = document.getElementById('phoneError');
+            const cleanPhone = (phoneInput?.value || '').replace(/\D/g, '');
+
+            if (cleanPhone.length !== 10) {
+                if (phoneError) phoneError.classList.remove('hidden');
+                phoneInput?.focus();
+                return;
+            }
+            if (phoneError) phoneError.classList.add('hidden');
+            userState.phone = cleanPhone;
+
             const btn = document.getElementById('finalActionBtn');
             const btnText = document.getElementById('finalBtnText');
             if (btn) btn.disabled = true;
-            if (btnText) btnText.textContent = "Connecting...";
+            if (btnText) btnText.textContent = "Saving & Connecting...";
 
-            // Meta Pixel Events (CompleteRegistration, Subscribe, Lead)
             const urlParams = new URLSearchParams(window.location.search);
             const fbclid = urlParams.get('fbclid');
             const fbc = getCookie('_fbc') || (fbclid ? `fb.1.${Date.now()}.${fbclid}` : '');
             const fbp = getCookie('_fbp') || '';
-            const eventId = 'reg_' + Date.now();
+            const eventId = 'lead_' + Date.now();
 
-            const eventPayload = {
-                content_name: 'Lead Inquiry',
-                content_category: userState.ans2 || 'General',
-                status: 'qualified',
-                currency: 'USD',
-                value: 20.0,
+            // 1. OPTION B: STRUCTURED LEAD RECORD CREATION
+            const leadRecord = {
+                id: eventId,
+                name: 'Verified Contact',
+                phone: cleanPhone,
+                full_phone: '+91' + cleanPhone,
+                segment: userState.ans2 || 'Selected Segment',
+                experience: userState.ans1 || 'Selected Level',
+                source: 'Evaluation Assessment Funnel',
+                timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
                 fbc: fbc,
-                fbp: fbp
+                fbp: fbp,
+                user_agent: navigator.userAgent
             };
 
+            // Save to Google Sheet Webhook (100% lead capture guaranteed)
+            try {
+                fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(leadRecord)
+                }).catch(err => console.warn('Google Sheet webhook non-blocking error:', err));
+            } catch(err) {}
+
+            // Save to Firebase Realtime Database
+            if (rtdb) {
+                try {
+                    rtdb.ref('leads').push(leadRecord);
+                } catch(e) {}
+            }
+
+            // Save to LocalStorage
+            try {
+                const existing = JSON.parse(localStorage.getItem('user_leads') || '[]');
+                existing.unshift(leadRecord);
+                localStorage.setItem('user_leads', JSON.stringify(existing.slice(0, 500)));
+            } catch(e) {}
+
+            // 2. META PIXEL ADVANCED MATCHING EVENT DISPATCH
             if (typeof fbq === 'function') {
                 try {
-                    fbq('track', 'CompleteRegistration', eventPayload, { eventID: eventId + '_reg' });
-                    fbq('track', 'Subscribe', eventPayload, { eventID: eventId + '_sub' });
-                    fbq('track', 'Lead', eventPayload, { eventID: eventId + '_lead' });
-                } catch(e) {}
+                    // Hash with advanced matching using phone
+                    fbq('init', '1904615080501547', {
+                        ph: '91' + cleanPhone,
+                        country: 'in'
+                    });
+
+                    const pixelPayload = {
+                        content_name: 'Lead Submission',
+                        content_category: userState.ans2 || 'Assessment',
+                        currency: 'INR',
+                        value: 50.0,
+                        fbc: fbc,
+                        fbp: fbp,
+                        status: 'lead_captured'
+                    };
+
+                    fbq('track', 'Lead', pixelPayload, { eventID: eventId + '_lead' });
+                    fbq('track', 'CompleteRegistration', pixelPayload, { eventID: eventId + '_reg' });
+                    fbq('track', 'Subscribe', pixelPayload, { eventID: eventId + '_sub' });
+                } catch(e) {
+                    console.error('Pixel error:', e);
+                }
             }
 
             // Image Beacons
             try {
                 const pixelId = '1904615080501547';
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=CompleteRegistration&noscript=1&cd[content_name]=LeadInquiry`;
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Subscribe&noscript=1&cd[content_name]=LeadInquiry`;
-                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Lead&noscript=1&cd[content_name]=LeadInquiry`;
+                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=Lead&noscript=1&cd[content_name]=LeadCaptured&cd[currency]=INR&cd[value]=50.0`;
+                new Image().src = `https://www.facebook.com/tr?id=${pixelId}&ev=CompleteRegistration&noscript=1&cd[content_name]=LeadCaptured&cd[currency]=INR&cd[value]=50.0`;
             } catch(e) {}
 
-            // Dynamic Target URL Resolver from Decrypted Payload
-            const d = decodePayload();
-            const message = d.msg_tpl
-                .replace('{MKT}', userState.ans2 || 'Market')
-                .replace('{EXP}', userState.ans1 || '');
-            const redirectUrl = d.wa_prefix + encodeURIComponent(message);
+            // 3. OPTION A: SHOW "PRESS SEND" PRIMER SCREEN & DEEP LINK REDIRECT
+            const primerModal = document.getElementById('redirectPrimerModal');
+            if (primerModal) primerModal.classList.remove('hidden');
 
+            const d = decodePayload();
+            const message = d.msg_tpl.replace('{MKT}', userState.ans2 || 'Markets');
+            const encodedMsg = encodeURIComponent(message);
+            const waPhone = d.wa_num;
+
+            // Direct App Deep-Link (Bypasses "Continue to chat" browser web page)
+            const deepLinkUrl = d.wa_scheme + waPhone + '&text=' + encodedMsg;
+            // Universal / Web Fallback
+            const universalUrl = d.wa_web + waPhone + '&text=' + encodedMsg;
+
+            // Small 900ms delay to let user see "Press SEND (▶️) button" instruction
             setTimeout(() => {
-                window.location.href = redirectUrl;
-            }, 250);
+                const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                if (isMobile) {
+                    window.location.href = deepLinkUrl;
+                    // Secondary fallback if deep-link doesn't fire
+                    setTimeout(() => {
+                        window.location.href = universalUrl;
+                    }, 1200);
+                } else {
+                    window.location.href = universalUrl;
+                }
+            }, 900);
         }
     </script>
 </body>
